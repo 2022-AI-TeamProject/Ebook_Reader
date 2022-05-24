@@ -15,8 +15,6 @@
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #f0ede7;
 	-fx-border-color: #b3a78e; 
-	-fx-border-style: solid ,  solid  ,  solid  ,  solid;
-	-fx-border-width: 1;
 
  }
  
@@ -31,6 +29,30 @@
 #addButton{
 	-fx-background-radius: 0;
 	-fx-background-image: url("file:img/plusbutton.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #e0dddc;
+}
+
+#leftPageButton{
+	-fx-background-radius: 0;
+	-fx-background-image: url("file:img/left.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #f9f7f4;
+}
+
+#rightPageButton{
+	-fx-background-radius: 0;
+	-fx-background-image: url("file:img/right.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #f9f7f4;
+}
+
+#sideMenuButton{
+	-fx-background-radius: 0;
+	-fx-background-image: url("file:img/arrow.png");
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #e0dddc;
