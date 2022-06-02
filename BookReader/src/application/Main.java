@@ -1,14 +1,15 @@
 package application;
 	
 import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	public MainController mc;
 	
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -29,6 +30,8 @@ public class Main extends Application {
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -38,7 +38,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <ScrollBar layoutX="879.0" orientation="VERTICAL" prefHeight="630.0" prefWidth="17.0" />
-            <Button fx:id="addButton" layoutX="37.0" layoutY="22.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="127.0" />
+            <Button fx:id="addButton" layoutX="37.0" layoutY="22.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="127.0" onAction ="#handleABBtnAction" />
          </children>
       </Pane>
    </center>
