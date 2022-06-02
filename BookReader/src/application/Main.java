@@ -2,6 +2,7 @@ package application;
 	
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -16,9 +17,10 @@ public class Main extends Application {
 	}
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) {	
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Home.fxml"));
+			//BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Home.fxml"));	
+			Parent root = (Parent)FXMLLoader.load(getClass().getResource("Home.fxml"));
 			Scene scene = new Scene(root,900,700);
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -28,10 +30,13 @@ public class Main extends Application {
 			primaryStage.getIcons().add(icon);
 			primaryStage.setTitle("EbookReader");
 			
+			//scene ¼³Á¤
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(true);
 			primaryStage.show();
 			
-			
+	
+	
 			
 		} catch(Exception e) {
 			e.printStackTrace();

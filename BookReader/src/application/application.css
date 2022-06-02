@@ -57,3 +57,11 @@
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #e0dddc;
 }
+
+#fatigueSocietyBtn{
+	-fx-background-radius: 0;
+	-fx-background-image: url("file:img/bookbutton.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #e0dddc;
+}
