@@ -8,13 +8,35 @@
 	 -fx-border-width: 1;
 }
  
+ 
+#mainMenu{
+	-fx-background-color: #f0ede7;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
+	-fx-background-radius: 1em;
+ }
+ 
+#viewmenu{
+	-fx-background-color: #f0ede7;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
+	-fx-background-radius: 1em;
+ }
+ 
+#viewmenus{
+	-fx-background-color: #f0ede7;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
+	-fx-background-radius: 1em;
+ }
+ 
 #searchButton{
-	-fx-background-radius: 0;
 	-fx-background-image: url("file:img/searchbutton.png");
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #f0ede7;
-	-fx-border-color: #b3a78e; 
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
 
  }
  
@@ -24,6 +46,8 @@
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #f0ede7;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
 }
 
 #addButton{
@@ -32,30 +56,53 @@
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #e0dddc;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
 }
 
 #leftPageButton{
-	-fx-background-radius: 0;
+	-fx-background-radius: 1em;
 	-fx-background-image: url("file:img/left.png");
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #f9f7f4;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	
 }
 
 #rightPageButton{
-	-fx-background-radius: 0;
+	-fx-background-radius: 1em;
 	-fx-background-image: url("file:img/right.png");
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #f9f7f4;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
 }
 
-#sideMenuButton{
-	-fx-background-radius: 0;
-	-fx-background-image: url("file:img/arrow.png");
+#BookBtn{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/booknote.png");
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
-	-fx-background-color: #e0dddc;
+	-fx-background-color: #f0ede7;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#transbtn{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/trans.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #f0ede7;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#musicbtn{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/music.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #f0ede7;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
 }
 
 #fatigueSocietyBtn{
@@ -64,4 +111,15 @@
 	-fx-background-position: center center;
 	-fx-background-repeat: no-repeat;
 	-fx-background-color: #e0dddc;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
 }
+
+#bookMarkOn{
+	-fx-background-image: url("file:img/bookmarknone.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #f9f7f4;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
+}
+
