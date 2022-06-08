@@ -48,17 +48,17 @@ public class Main extends Application {
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
-			//icon ¼³Á¤ 
+			//icon ì„¤ì • 
 			Image icon = new Image("file:img/windowicon.png");
 			primaryStage.getIcons().add(icon);
 			primaryStage.setTitle("EbookReader");
 			
-			//scene ¼³Á¤
+			//scene ì„¤ì •
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(true);
 			primaryStage.show();
 			
-			//scroll ¼³Á¤
+			//scroll ì„¤ì •
 			scrollBar.setLayoutX(scene.getWidth() - scrollBar.getWidth());
 			scrollBar.setMin(0);
 			scrollBar.setOrientation(Orientation.VERTICAL);
@@ -72,16 +72,16 @@ public class Main extends Application {
 	}
 	
 	public static void trans(String[] args) {
-		//³×ÀÌ¹ö ÆÄÆÄ°í ¹ø¿ª 
-        String clientId = "c7e6eTDx_8KNaF3VNLjj";//¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ğÆ® ¾ÆÀÌµğ°ª";
-        String clientSecret = "pS2HFuttkj";//¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ğÆ® ½ÃÅ©¸´°ª";
+		//ë„¤ì´ë²„ íŒŒíŒŒê³  ë²ˆì—­ 
+        String clientId = "c7e6eTDx_8KNaF3VNLjj";//ì• í”Œë¦¬ì¼€ì´ì…˜ í´ë¼ì´ì–¸íŠ¸ ì•„ì´ë””ê°’";
+        String clientSecret = "kkkkkkkkkkk";//ì• í”Œë¦¬ì¼€ì´ì…˜ í´ë¼ì´ì–¸íŠ¸ ì‹œí¬ë¦¿ê°’";
 
         String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
         String text;
         try {
-        	text = URLEncoder.encode("Ä«ÇÁÄ«´Â ´ë´ÜÈ÷ ³­ÇØÇÑ ´ÜÆí 'ÇÁ·Î¸ŞÅ×¿ì½º'¿¡¼­ ¸î Â÷·Ê¿¡ °ÉÃÄ ÇÁ·Î¸ŞÅ×¿ì½º ½ÅÈ­ÀÇ ÀçÇØ¼® ÀÛ¾÷À» ¼öÇàÇÑ´Ù.", "UTF-8"); 
+        	text = URLEncoder.encode("ì¹´í”„ì¹´ëŠ” ëŒ€ë‹¨íˆ ë‚œí•´í•œ ë‹¨í¸ 'í”„ë¡œë©”í…Œìš°ìŠ¤'ì—ì„œ ëª‡ ì°¨ë¡€ì— ê±¸ì³ í”„ë¡œë©”í…Œìš°ìŠ¤ ì‹ í™”ì˜ ì¬í•´ì„ ì‘ì—…ì„ ìˆ˜í–‰í•œë‹¤.", "UTF-8"); 
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("ÀÎÄÚµù ½ÇÆĞ", e);
+            throw new RuntimeException("ì¸ì½”ë”© ì‹¤íŒ¨", e);
         }
 
         Map<String, String> requestHeaders = new HashMap<>();
@@ -95,7 +95,7 @@ public class Main extends Application {
 
     private static String post(String apiUrl, Map<String, String> requestHeaders, String text){
         HttpURLConnection con = connect(apiUrl);
-        String postParams = "source=ko&target=en&text=" + text; //¿øº»¾ğ¾î: ÇÑ±¹¾î (ko) -> ¸ñÀû¾ğ¾î: ¿µ¾î (en)
+        String postParams = "source=ko&target=en&text=" + text; //ì›ë³¸ì–¸ì–´: í•œêµ­ì–´ (ko) -> ëª©ì ì–¸ì–´: ì˜ì–´ (en)
         try {
             con.setRequestMethod("POST");
             for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
@@ -109,13 +109,13 @@ public class Main extends Application {
             }
 
             int responseCode = con.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) { // Á¤»ó ÀÀ´ä
+            if (responseCode == HttpURLConnection.HTTP_OK) { // ì •ìƒ ì‘ë‹µ
                 return readBody(con.getInputStream());
-            } else {  // ¿¡·¯ ÀÀ´ä
+            } else {  // ì—ëŸ¬ ì‘ë‹µ
                 return readBody(con.getErrorStream());
             }
         } catch (IOException e) {
-            throw new RuntimeException("API ¿äÃ»°ú ÀÀ´ä ½ÇÆĞ", e);
+            throw new RuntimeException("API ìš”ì²­ê³¼ ì‘ë‹µ ì‹¤íŒ¨", e);
         } finally {
             con.disconnect();
         }
@@ -126,9 +126,9 @@ public class Main extends Application {
             URL url = new URL(apiUrl);
             return (HttpURLConnection)url.openConnection();
         } catch (MalformedURLException e) {
-            throw new RuntimeException("API URLÀÌ Àß¸øµÇ¾ú½À´Ï´Ù. : " + apiUrl, e);
+            throw new RuntimeException("API URLì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤. : " + apiUrl, e);
         } catch (IOException e) {
-            throw new RuntimeException("¿¬°áÀÌ ½ÇÆĞÇß½À´Ï´Ù. : " + apiUrl, e);
+            throw new RuntimeException("ì—°ê²°ì´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. : " + apiUrl, e);
         }
     }
 
@@ -145,7 +145,7 @@ public class Main extends Application {
 
             return responseBody.toString();
         } catch (IOException e) {
-            throw new RuntimeException("API ÀÀ´äÀ» ÀĞ´Âµ¥ ½ÇÆĞÇß½À´Ï´Ù.", e);
+            throw new RuntimeException("API ì‘ë‹µì„ ì½ëŠ”ë° ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.", e);
         }
 	}
 	
