@@ -1,0 +1,134 @@
+.root{
+	 -fx-background-color: #3D433D;
+}
+.tool-bar{
+	 -fx-background-color: #272B27;
+	 -fx-border-color: #f0ede7; 
+	 -fx-border-style: solid ,  solid  ,  solid  ,  solid;
+	 -fx-border-width: 1;
+}
+ 
+ 
+#mainMenu{
+	-fx-background-color: #272B27;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
+	-fx-background-radius: 1em;
+ }
+ 
+#viewmenu{
+	-fx-background-color: #272B27;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
+	-fx-background-radius: 1em;
+ }
+ 
+#viewmenus{
+	-fx-background-color: #272B27;
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center center;
+	-fx-background-radius: 1em;
+ }
+ 
+#searchButton{
+	-fx-background-image: url("file:img/searchbutton.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #272B27;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
+
+ }
+ 
+#settingButton{
+	-fx-background-radius: 0;
+	-fx-background-image: url("file:img/setting.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #272B27;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
+}
+
+#addButton{
+	-fx-background-radius: 0;
+	-fx-background-image: url("file:img/plusbutton.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #e0dddc;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#leftPageButton{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/left.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #5A5F5A;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	
+}
+
+#rightPageButton{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/right.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #5A5F5A;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#BookBtn{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/booknote.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #272B27;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#transbtn{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/trans.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #272B27;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#musicbtn{
+	-fx-background-radius: 1em;
+	-fx-background-image: url("file:img/music.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #272B27;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#fatigueSocietyBtn{
+	-fx-background-radius: 0;
+	-fx-background-image: url("file:img/bookbutton.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #e0dddc;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+}
+
+#bookMarkOn{
+	-fx-background-image: url("file:img/bookmarknone.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #272B27;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
+}
+
+#bookMarkOff{
+	-fx-background-image: url("file:img/bookmarkfull.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #272B27;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
+}
+

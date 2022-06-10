@@ -33,17 +33,17 @@ public class Main extends Application {
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
-			//icon º≥¡§ 
+			//icon ÏÑ§Ï†ï
 			Image icon = new Image("file:img/windowicon.png");
 			primaryStage.getIcons().add(icon);
 			primaryStage.setTitle("EbookReader");
 			
-			//scene º≥¡§
+			//scene ÏÑ§Ï†ï, ÌÅ¨Í∏∞ Î≥ÄÌôò Î∂àÍ∞Ä 
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
 			
-			//scroll º≥¡§
+			//scroll ÏÑ§Ï†ï (ÏàòÏ†ï ÌïÑÏöî) 
 			scrollBar.setLayoutX(scene.getWidth() - scrollBar.getWidth());
 			scrollBar.setMin(0);
 			scrollBar.setOrientation(Orientation.VERTICAL);

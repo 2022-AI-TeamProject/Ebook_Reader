@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewController">
+   <top>
+      <ToolBar prefHeight="52.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+        <items>
+            <ImageView fitHeight="45.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:img/toolbaricon.png" />
+               </image>
+            </ImageView>
+          <Button mnemonicParsing="false" style="-fx-background-color: f0ede7;" text="BookReader">
+               <font>
+                  <Font size="21.0" />
+               </font></Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="55.23828125" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <MenuBar fx:id="viewmenu">
+              <menus>
+                <Menu mnemonicParsing="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                     <graphic>
+                        <Button fx:id="musicbtn" prefHeight="42.0" prefWidth="42.0" />
+                     </graphic>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction = "#Translation" text="번역(한국어-&gt;영어)" />
+                  </items>
+                     <graphic>
+                        <Button fx:id="transbtn" prefHeight="42.0" prefWidth="42.0" />
+                     </graphic>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="목차" />
+                        <MenuItem mnemonicParsing="false" text="북마크 목록 " />
+                        <MenuItem mnemonicParsing="false" text="독서노트" />
+                  </items>
+                     <graphic>
+                        <Button fx:id="BookBtn" prefHeight="42.0" prefWidth="42.0" />
+                     </graphic>
+                </Menu>
+              </menus>
+            </MenuBar>
+            	<TextField />
+            	<Button fx:id="searchButton" prefHeight="42.0" prefWidth="42.0" />
+            <MenuBar fx:id="viewmenus">
+              <menus>
+                <Menu mnemonicParsing="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="어두운 모드" />
+                        <MenuItem mnemonicParsing="false" text="version 0.o.1" />
+                  </items>
+                     <graphic>
+                        	<Button fx:id="settingButton" prefHeight="42.0" prefWidth="42.0" />
+                     </graphic>
+                </Menu>
+              </menus>
+            </MenuBar>
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+ 
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <SplitPane dividerPositions="0.494148244473342" layoutX="71.0" layoutY="32.0" prefHeight="560.0" prefWidth="759.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="543.0" prefWidth="284.0">
+                     <children>
+                        <TextArea fx:id="leftTA" layoutX="5.0" layoutY="5.0" prefHeight="548.0" prefWidth="361.0" text="카프카는 대단히 난해한 단편 '프로메테우스'에서 몇 차례에 걸쳐 프로메테우스 신화의 재해석 작업을 수행한다.첫번째 재해석 시도에 따르면 &quot;신들은 지쳤고 독수리도 지쳤으며 상처도 지쳐서 아물었다.&quot; 나는 또 하나의 재해석을 통해 프로메테우스 전설을 내적 영혼의 장면으로, 즉 오늘날 스스로에게 폭력을 가하며 자기 자신과 전쟁을 치르고 있는 성과주체의 심리적 기구에 관한 묘사로 파악하고자 한다. 잘 알려진 것처럼 프로메테우스는 인간에게 불과 함께 노동도 가져다주었다. 성과주체는 스스로 자유롭다고 믿지만 실은 프로메테우스처럼 묶어 있다. 끝없이 다시 자라나는 프로메테우스의 간을 먹는 독수리는 성과주체와 전쟁을 벌이고 있는 제2의 자아라고 해석할 수 있을 것이다. 그렇게 본다면 프로메테우스와 독수리의 관계는 자기 착취의 관계인 셈인다. 피로란 스스로는 고통을 느낄 줄 모르는 간의 고통이라고들 한다. 따라서 자기 착취의 주체인 프로메테우스의 엄청난 피로에 빠지고 말 것이다. -한병철의 피로사회 중 p81 ~82" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font></TextArea>
+                     </children></AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="370.0">
+                     <children>
+                        <TextArea fx:id="rightTA" layoutX="5.0" layoutY="5.0" prefHeight="548.0" prefWidth="366.0" />
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+            <Button fx:id="leftPageButton" layoutX="14.0" layoutY="258.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="51.0" />
+            <Button fx:id="rightPageButton" layoutX="835.0" layoutY="269.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="51.0" />
+            <Button fx:id="bookMarkOn" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOn" prefHeight="54.0" prefWidth="51.0" />
+             <Button fx:id="bookMarkOff" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOff" prefHeight="54.0" prefWidth="51.0" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

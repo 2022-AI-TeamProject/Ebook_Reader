@@ -39,6 +39,7 @@ public class MainController implements Initializable{
 
     }
 
+    
 	//file 불러오기 
 	public void OpenFile(ActionEvent e) {
 		FileChooser fc = new FileChooser();
@@ -50,9 +51,6 @@ public class MainController implements Initializable{
 		
 		//저장
 		File file = fc.showOpenDialog(addStage);
-		
-		//!!!!확인용 다 만들고 지워야함
-		//System.out.println(file);
 		
 		String fileName, fileContext = null ; 
 		String path = "";
