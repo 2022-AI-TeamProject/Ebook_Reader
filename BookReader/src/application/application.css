@@ -123,3 +123,12 @@
 	-fx-background-radius: 1em;
 }
 
+#bookMarkOff{
+	-fx-background-image: url("file:img/bookmarkfull.png");
+	-fx-background-position: center center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: #f9f7f4;
+	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
+	-fx-background-radius: 1em;
+}
+

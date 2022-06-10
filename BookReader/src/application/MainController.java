@@ -1,12 +1,16 @@
  package application;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.text.AbstractDocument.BranchElement;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -26,7 +30,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainController implements Initializable{
-	//OpenFile, ºÒ·¯¿Ã ÆÄÀÏÀ» ¼±ÅÃÇÒ ¶§ »õ·Î¿î stage ÇÊ¿ä  
+	//OpenFile, ë¶ˆëŸ¬ì˜¬ íŒŒì¼ì„ ì„ íƒí•  ë•Œ ìƒˆë¡œìš´ stage í•„ìš”  
 	private Stage addStage;
 
 
@@ -35,65 +39,72 @@ public class MainController implements Initializable{
 
     }
 
-	//file ºÒ·¯¿À±â 
+	//file ë¶ˆëŸ¬ì˜¤ê¸° 
 	public void OpenFile(ActionEvent e) {
 		FileChooser fc = new FileChooser();
-		fc.getExtensionFilters().addAll(new ExtensionFilter("txtÆÄÀÏ: Text Files", "*.txt"),
-				new ExtensionFilter("pdfÆÄÀÏ: Pdf Filew", "*.pdf"),
-				new ExtensionFilter("±× ¿ÜÀÇ ÆÄÀÏ: All Filew", "*.*"));
+		fc.getExtensionFilters().addAll(new ExtensionFilter("txtíŒŒì¼: Text Files", "*.txt"),
+				new ExtensionFilter("pdfíŒŒì¼: Pdf Filew", "*.pdf"),
+				new ExtensionFilter("ê·¸ ì™¸ì˜ íŒŒì¼: All Filew", "*.*"));
 		
 		
 		
-		//ÀúÀå
+		//ì €ì¥
 		File file = fc.showOpenDialog(addStage);
 		
-		//!!!!È®ÀÎ¿ë ´Ù ¸¸µé°í Áö¿ö¾ßÇÔ
+		//!!!!í™•ì¸ìš© ë‹¤ ë§Œë“¤ê³  ì§€ì›Œì•¼í•¨
 		//System.out.println(file);
 		
-		String filename ; 
+		String fileName, fileContext = null ; 
 		String path = "";
 		
-		//¼±ÅÃµÈ ÆÄÀÏ °æ·Î ÀĞ±â 
+		//ì„ íƒëœ íŒŒì¼ ê²½ë¡œ ì½ê¸° 
 		path = file.getParentFile().toString();
-		filename = file.getName();
+		fileName = file.getName();
+		System.out.println(fileName);
 		
-		System.out.println(filename);
-		
-		//ÆÄÀÏÀÌ ¼±ÅÃµÇ¾úÀ» ¶§ 
+		//íŒŒì¼ì´ ì„ íƒë˜ì—ˆì„ ë•Œ 
 		if(file != null) {
 			
-			//ºÒ·¯µéÀÎ ÆÄÀÏÀÇ Á¦¸ñÀÌ ¹öÆ°ÀÇ ÀÌ¸§. »õ·Î¿î ¹öÆ° »ı¼º(Ã¥) 
+			//ë¶ˆëŸ¬ë“¤ì¸ íŒŒì¼ì˜ ì œëª©ì´ ë²„íŠ¼ì˜ ì´ë¦„. ìƒˆë¡œìš´ ë²„íŠ¼ ìƒì„±(ì±…) 
 			Button newButton = new Button();
-			newButton.setText(filename);
+			newButton.setText(fileName);
 			
-			//ÄÚµå ±¸ÇöÇØ¾ßÇÔ 
+			//ì½”ë“œ êµ¬í˜„í•´ì•¼í•¨ 
 			
 			try {
 				FileInputStream fis = new FileInputStream(file);
-				BufferedInputStream bis = new BufferedInputStream(fis);
+				BufferedReader bis = new BufferedReader(new InputStreamReader(fis));
+				String line; 
+				while((line = bis.readLine()) != null) {
+					fileContext+=line;
+				}
+				System.out.println(fileContext);
 		
 			}
 			
 			catch(FileNotFoundException fne) {
 				Alert nullAlert = new Alert(AlertType.WARNING);
 				nullAlert.setTitle("Warning Dialog");
-				nullAlert.setHeaderText("ÆÄÀÏÀ» ºÒ·¯¿Ã ¼ö ¾ø½À´Ï´Ù.");
-				nullAlert.setContentText("ºÒ·¯µéÀÏ ÆÄÀÏÀ» ´Ù½Ã È®ÀÎÇÏ¼¼¿ä.");
+				nullAlert.setHeaderText("íŒŒì¼ì„ ë¶ˆëŸ¬ì˜¬ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				nullAlert.setContentText("ë¶ˆëŸ¬ë“¤ì¼ íŒŒì¼ì„ ë‹¤ì‹œ í™•ì¸í•˜ì„¸ìš”.");
+			}
+			catch(IOException fre) {
+				fre.printStackTrace();
 			}
 			
 		}
-		//ÆÄÀÏÀÌ ¾Æ¹«°Íµµ ÀÔ·Â¹ŞÁö ¾Ê¾ÒÀ» ¶§ ¾Ë¶÷
+		//íŒŒì¼ì´ ì•„ë¬´ê²ƒë„ ì…ë ¥ë°›ì§€ ì•Šì•˜ì„ ë•Œ ì•ŒëŒ
 		else {
 				Alert nullAlert = new Alert(AlertType.WARNING);
 				nullAlert.setTitle("Warning Dialog");
-				nullAlert.setHeaderText("ÆÄÀÏÀ» ºÒ·¯¿Ã ¼ö ¾ø½À´Ï´Ù.");
-				nullAlert.setContentText("ºÒ·¯µéÀÏ ÆÄÀÏÀ» ´Ù½Ã È®ÀÎÇÏ¼¼¿ä.");
+				nullAlert.setHeaderText("íŒŒì¼ì„ ë¶ˆëŸ¬ì˜¬ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				nullAlert.setContentText("ë¶ˆëŸ¬ë“¤ì¼ íŒŒì¼ì„ ë‹¤ì‹œ í™•ì¸í•˜ì„¸ìš”.");
 			
 		}
 	}
 	
  
-	//view fxml ·Î ÀÌµ¿ (¼öÁ¤ ÇÊ¿ä)
+	//view fxml ë¡œ ì´ë™ (ìˆ˜ì • í•„ìš”)
 	public void ViewMove(ActionEvent e) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml")); 
 		Parent root;
@@ -101,7 +112,7 @@ public class MainController implements Initializable{
 	
 			root = (Parent) loader.load();
 			Stage stage = new Stage();
-			//!!!! file ÀÌ¸§À¸·Î setting ¼³Á¤ ÇÊ¼ö  
+			//!!!! file ì´ë¦„ìœ¼ë¡œ setting ì„¤ì • í•„ìˆ˜  
 		    stage.setTitle("EBookReader");
 		    Scene scene = new Scene(root);
 		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -118,7 +129,7 @@ public class MainController implements Initializable{
 	
 	
 	//test 
-	//view fxml ·Î ÀÌµ¿ (¼öÁ¤ ÇÊ¿ä)
+	//view fxml ë¡œ ì´ë™ (ìˆ˜ì • í•„ìš”)
 	public void TestViewMove(ActionEvent e) {
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("testView.fxml")); 
@@ -143,61 +154,13 @@ public class MainController implements Initializable{
 	
 	}
 	
-	
-	public void OpenUnderMenu(ActionEvent e) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("testView.fxml")); 
-		Parent root;
-		try {
-			root = (Parent) loader.load();
-			Stage stage = new Stage();
-		    stage.setTitle("fatigueSociety");
-		    Scene scene = new Scene(root);
-		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		    
-		    //¾Æ·¡ ¸¶¿ì½º ¿À¹ö ¸Ş´º 
-		    VBox menu = new VBox();
-		    menu.setId("underMenu");
-		    menu.prefWidthProperty();
-		    //¹ÙÀÎ´õ ¾È ¸ÔÈû (¿Ö?)
-		    //menu.prefWidthProperty().bind(root.widthProperty());
-		    menu.setPrefHeight(40);
-		    menu.getChildren().addAll(new Button("correct!"));
-		    
-		    menu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		    menu.setTranslateX(-90);
-		    TranslateTransition menuTranslation = new TranslateTransition(Duration.millis(500), menu);
-		    menuTranslation.setFromX(-190);        
-		    menuTranslation.setToX(0);    
-		    
-		    menu.setOnMouseEntered(evt -> {            
-		    	menuTranslation.setRate(1);            
-		    	menuTranslation.play();        });   
-		    
-		    menu.setOnMouseExited(evt -> {            
-		    	menuTranslation.setRate(-1);            
-		    	menuTranslation.play();        });
+	//ë‹¤í¬ ëª¨ë“œ 
+	public void Darkmode(ActionEvent e) {
 
-		    //root.getChildren().addAll(menu);
-		    
-		    stage.setScene(scene);
-		    stage.show();
-	    
-		} catch (IOException tve) {
-			tve.printStackTrace();
-		}
-	}
-	
-	//´ÙÅ© ¸ğµå 
-	public void Darkmode() {}
-	
-	//ºÏ¸¶Å© ÄÑ±â 
-	public void BookMarkOn() {
 		
 	}
 	
-	//ºÏ¸¶Å© ²ô±â 
-	public void BookMarkOff() {
-		
-	}
+
+
 }
 

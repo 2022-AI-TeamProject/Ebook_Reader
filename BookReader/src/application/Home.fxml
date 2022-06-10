@@ -18,7 +18,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <top>
-      <ToolBar prefHeight="52.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <ToolBar fx:id="toolbar" prefHeight="52.0" prefWidth="900.0" BorderPane.alignment="CENTER">
         <items>
             <ImageView fitHeight="45.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,7 +36,7 @@
               <menus>
                 <Menu mnemonicParsing="false">
                   <items>
-                    <MenuItem fx:id="DarkModeBtn" mnemonicParsing="false" text="어두운 모드" />
+                    <MenuItem fx:id="DarkModeBtn" mnemonicParsing="false" text="어두운 모드" onAction ="#Darkmode"/>
                         <MenuItem mnemonicParsing="false" text="version 0.0.1" />
                   </items>
                      <graphic>
