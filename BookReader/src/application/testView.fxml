@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewController">
    <top>
       <ToolBar prefHeight="52.0" prefWidth="900.0" BorderPane.alignment="CENTER">
         <items>
@@ -31,7 +31,9 @@
                   <Font size="21.0" />
                </font></Button>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="55.23828125" />
-            <Pane HBox.hgrow="ALWAYS" />
+            <Pane HBox.hgrow="ALWAYS">
+               <children>
+               </children></Pane>
             <MenuBar fx:id="viewmenu">
               <menus>
                 <Menu mnemonicParsing="false">

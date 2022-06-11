@@ -41,13 +41,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import application.Book;
-import application.ViewController;
 
 public class MainController implements Initializable{
 	
 	//book add btn
   	@FXML private Button addButton;
-  	
+
   	//OpenFile, 불러올 파일을 선택할 때 새로운 stage 필요  
 	private Stage addStage;
 	
@@ -77,7 +76,8 @@ public class MainController implements Initializable{
     		//저장 (확인 필요) 
     		File file = fc.showOpenDialog(addStage);
     		
-    		String fileName, fileContext = null ; 
+    		String fileName = "" ; 
+    		String fileContext = "" ; 
     		String path = "";
     		
     		//선택된 파일 경로 읽기 
@@ -113,14 +113,15 @@ public class MainController implements Initializable{
     				//불러들인 파일의 제목이 버튼의 이름. 새로운 버튼 생성 -> 책
     				Button newBookbtn = new Button();
     				newBookbtn.setText(fileName);
-    				newBookbtn.setMinHeight(170.0);
-    				newBookbtn.setMaxHeight(47.0);
+    				newBookbtn.setMinHeight(166.0);
+    				newBookbtn.setMinWidth(123.0);
     				newBookbtn.setStyle(" -fx-border-radius: 0; -fx-background-image: url(\"file:img/bookbutton.png\"); -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-color: #e0dddc; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );" );
     				grid.add(newBookbtn, 1, 0);
     				
     				//번역 버튼 
     		    	newBookbtn.setOnAction(e ->{
     		    		TestViewMove(book, e);
+
     		    		
     		    	});
     		    	
@@ -149,6 +150,7 @@ public class MainController implements Initializable{
     	});
     	
     }
+    
 
 	
 	//reader 불러오기(새 창)
@@ -166,10 +168,11 @@ public class MainController implements Initializable{
 			stage.getIcons().add(icon);
 			stage.setResizable(false);
 		    stage.setTitle(book.Booktitle());
-		    //book 전달
-		    ViewController.BookIn(book);
-		  
 		    
+			
+			//book 전달
+		    ViewController viewController = new ViewController();
+		    viewController.viewController(book.contextB);
 		    
 		    Scene scene = new Scene(root);
 		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -186,7 +189,6 @@ public class MainController implements Initializable{
 	
 	}
 	
-	    	
 	//다크 모드 
 	public void Darkmode(ActionEvent e) {
 

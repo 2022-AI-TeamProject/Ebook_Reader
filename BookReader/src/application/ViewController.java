@@ -1,35 +1,44 @@
  package application;
 
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
+ import java.io.BufferedReader;
+ import java.io.DataOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.io.InputStreamReader;
+ import java.io.UnsupportedEncodingException;
+ import java.net.HttpURLConnection;
+ import java.net.MalformedURLException;
+ import java.net.URL;
+ import java.net.URLEncoder;
+ import java.util.HashMap;
+ import java.util.Map;
+ import java.util.ResourceBundle;
+ import java.util.Set;
 
+import javax.lang.model.element.Element;
 import javax.naming.Context;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
-import application.Book;
+ import javafx.event.ActionEvent;
+ import javafx.event.EventHandler;
+ import javafx.fxml.FXML;
+ import javafx.fxml.Initializable;
+ import javafx.scene.control.Button;
+ import javafx.scene.control.MenuItem;
+ import javafx.scene.control.TextArea;
+import javafx.application.Application;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+
+import application.MainController;
 
 public class ViewController implements Initializable{
+	//번역 버튼 
 	@FXML MenuItem transKE = new MenuItem();
+	@FXML BorderPane bp = new BorderPane();
 	
 	//번역 구간 
 	@FXML TextArea leftTA = new TextArea();
@@ -37,46 +46,41 @@ public class ViewController implements Initializable{
 	
 	String getText1, getText2;
 	String resultText1, resultText2;
-	
 
+	static String context;
+
+	//book.context 받아오기 
+	public String viewController(String contextB) {
+		this.context =  contextB;
+		return context;
+	}
+	 
 	
-	 //book 내용 받음
-	 public static void BookIn(Book book) {
-		 String Context = book.contextB;
-		   
-		 //내용 전달 확인용 출력
-		 System.out.println(Context);
-	 }
-	   
     @Override
 	public void initialize(URL url, ResourceBundle rb) {
+    	//context확인용 
+    	System.out.println(viewController(context));
+    	
+    	//textarea를 context에 입력 
+    	leftTA.setText(viewController(context));
 
-    	
     }
-    
- 
-    
-    public void setTextArea(String context) {
     	
-    	
-    	
-    }
     
-    public void Translation(ActionEvent e) {
 
+	 
+	 
+    //번역
+    public void Translation(ActionEvent e) { 
     	//TextArea안에 text 불러오기  
     	getText1 = leftTA.getText();
     	getText2 = rightTA.getText();
     	
-    	System.out.println(getText1);
-    	
-    	trans(getText1, null);
-    	//trans(tx2.getText(), null);
-    	
+    	leftTA.setText(trans(getText1, null));
     }
     
     
-    public static void trans(String text, String[] args) {
+    public static String trans(String text, String[] args) {
 
     	//papago api 번역
         String clientId = "c7e6eTDx_8KNaF3VNLjj";//애플리케이션 클라이언트 아이디 값
@@ -92,9 +96,13 @@ public class ViewController implements Initializable{
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 
-        String responseBody = post(apiURL, requestHeaders, text);
+        //gson이용해서 파싱
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(post(apiURL, requestHeaders, text));
+        String transenten = (element.getAsJsonObject().get("message").getAsJsonObject().get("result").getAsJsonObject().get("translatedText").getAsString());
+        return transenten;
+        
 
-        System.out.println(responseBody);
     }
 
     private static String post(String apiUrl, Map<String, String> requestHeaders, String text){
