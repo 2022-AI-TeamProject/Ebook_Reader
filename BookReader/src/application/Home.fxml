@@ -10,8 +10,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -36,7 +39,7 @@
               <menus>
                 <Menu mnemonicParsing="false">
                   <items>
-                    <MenuItem fx:id="DarkModeBtn" mnemonicParsing="false" text="어두운 모드" onAction ="#Darkmode"/>
+                    <MenuItem fx:id="DarkModeBtn" mnemonicParsing="false" onAction="#Darkmode" text="어두운 모드" />
                         <MenuItem mnemonicParsing="false" text="version 0.0.1" />
                   </items>
                      <graphic>
@@ -51,17 +54,34 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <GridPane fx:id="grid" layoutX="10.0" layoutY="7.0" prefHeight="620.0" prefWidth="863.0">
+              <columnConstraints>
+                  <ColumnConstraints fx:id="gridzeroH" hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="128.0" />
+                  <ColumnConstraints fx:id="gridfirstH" hgrow="SOMETIMES" maxWidth="174.0" minWidth="10.0" prefWidth="148.0" />
+                  <ColumnConstraints fx:id="gridsecondH" hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="144.0" />
+                  <ColumnConstraints fx:id="gridthirdH" hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="153.0" />
+                  <ColumnConstraints fx:id="gridfourH" hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="138.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="0.0" prefWidth="130.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="240.0" minHeight="10.0" prefHeight="195.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="247.0" minHeight="0.0" prefHeight="206.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="229.0" minHeight="10.0" prefHeight="207.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="addButton" mnemonicParsing="false" prefHeight="166.0" prefWidth="123.0" />
+                  <Button fx:id="fatigueSocietyBtn" mnemonicParsing="false" onAction="#TestViewMove" prefHeight="170.0" prefWidth="47.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="fatigue society" textAlignment="CENTER" wrappingWidth="109.8359375" />
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
             <ScrollBar layoutX="879.0" orientation="VERTICAL" prefHeight="630.0" prefWidth="17.0" />
-            <Button fx:id="fatigueSocietyBtn" layoutX="200.0" layoutY="22.0" mnemonicParsing="false" onAction="#TestViewMove" prefHeight="170.0" prefWidth="127.0">
-               <graphic>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="fatigue society" textAlignment="CENTER" wrappingWidth="109.8359375" />
-                     </children>
-                  </VBox>
-               </graphic>
-            </Button>
-            <Button fx:id="addButton" layoutX="37.0" layoutY="22.0" mnemonicParsing="false" onAction="#OpenFile" prefHeight="170.0" prefWidth="127.0" />
          </children>
       </Pane>
    </center>

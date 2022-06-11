@@ -3,6 +3,7 @@ package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Orientation;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ToolBar;
@@ -27,8 +28,8 @@ public class Main extends Application {
 		try {
 			
 			
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Home.fxml"));	
-			//Parent root = (Parent)FXMLLoader.load(getClass().getResource("Home.fxml"));
+			//BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Home.fxml"));	
+			Parent root = (Parent)FXMLLoader.load(getClass().getResource("Home.fxml"));
 			Scene scene = new Scene(root,900,700); 
 			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

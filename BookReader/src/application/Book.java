@@ -8,6 +8,14 @@ public class Book {
 		this.titleB = title;
 		this.contextB = context;
 	}
+	
+	public String Booktitle(){
+		return titleB;
+	}
+	
+	public String BookContext() {
+		return contextB;
+	}
 
 	public static void main(String[] args) {
 		
