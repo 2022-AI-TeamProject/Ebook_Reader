@@ -1,12 +1,8 @@
  package application;
 
-import java.awt.TextArea;
-import java.io.BufferedInputStream;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,45 +14,56 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
-import javafx.animation.TranslateTransition;
+import javax.naming.Context;
+
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Stage;
-import javafx.util.Duration;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+
+import application.Book;
 
 public class ViewController implements Initializable{
-	//����
-	TextArea leftTA = new TextArea();
-	TextArea rightTA = new TextArea();
+	@FXML MenuItem transKE = new MenuItem();
+	
+	//번역 구간 
+	@FXML TextArea leftTA = new TextArea();
+	@FXML TextArea rightTA = new TextArea();
 	
 	String getText1, getText2;
 	String resultText1, resultText2;
+	
 
-
+	
+	 //book 내용 받음
+	 public static void BookIn(Book book) {
+		 String Context = book.contextB;
+		   
+		 //내용 전달 확인용 출력
+		 System.out.println(Context);
+	 }
+	   
     @Override
 	public void initialize(URL url, ResourceBundle rb) {
 
+    	
     }
-
+    
+ 
+    
+    public void setTextArea(String context) {
+    	
+    	
+    	
+    }
     
     public void Translation(ActionEvent e) {
-    	
-    	//setText으로 지정한 텍스트만 불러올 수 있음, 기존의 테스트용 글자는 불러오지 못 함
-    	leftTA.setText("감자");
-    	
+
     	//TextArea안에 text 불러오기  
     	getText1 = leftTA.getText();
     	getText2 = rightTA.getText();
@@ -70,10 +77,8 @@ public class ViewController implements Initializable{
     
     
     public static void trans(String text, String[] args) {
-    	TextArea tx = new TextArea();
-    	TextArea tx2 = new TextArea();
-    	
-		//���̹� ���İ� ���� 
+
+    	//papago api 번역
         String clientId = "c7e6eTDx_8KNaF3VNLjj";//애플리케이션 클라이언트 아이디 값
         String clientSecret = "pS2HFuttkj";//애플리케이션 클라이언트 시크릿값
         String apiURL = "https://openapi.naver.com/v1/papago/n2mt";

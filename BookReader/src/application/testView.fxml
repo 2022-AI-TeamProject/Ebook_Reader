@@ -44,7 +44,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction = "#Translation" text="번역(한국어-&gt;영어)" />
+                    <MenuItem fx:id="transKE" mnemonicParsing="false" onAction="#Translation" text="번역(한국어-&gt;영어)" />
                   </items>
                      <graphic>
                         <Button fx:id="transbtn" prefHeight="42.0" prefWidth="42.0" />
@@ -88,7 +88,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="543.0" prefWidth="284.0">
                      <children>
-                        <TextArea fx:id="leftTA" layoutX="5.0" layoutY="5.0" prefHeight="548.0" prefWidth="361.0" text="카프카는 대단히 난해한 단편 '프로메테우스'에서 몇 차례에 걸쳐 프로메테우스 신화의 재해석 작업을 수행한다.첫번째 재해석 시도에 따르면 &quot;신들은 지쳤고 독수리도 지쳤으며 상처도 지쳐서 아물었다.&quot; 나는 또 하나의 재해석을 통해 프로메테우스 전설을 내적 영혼의 장면으로, 즉 오늘날 스스로에게 폭력을 가하며 자기 자신과 전쟁을 치르고 있는 성과주체의 심리적 기구에 관한 묘사로 파악하고자 한다. 잘 알려진 것처럼 프로메테우스는 인간에게 불과 함께 노동도 가져다주었다. 성과주체는 스스로 자유롭다고 믿지만 실은 프로메테우스처럼 묶어 있다. 끝없이 다시 자라나는 프로메테우스의 간을 먹는 독수리는 성과주체와 전쟁을 벌이고 있는 제2의 자아라고 해석할 수 있을 것이다. 그렇게 본다면 프로메테우스와 독수리의 관계는 자기 착취의 관계인 셈인다. 피로란 스스로는 고통을 느낄 줄 모르는 간의 고통이라고들 한다. 따라서 자기 착취의 주체인 프로메테우스의 엄청난 피로에 빠지고 말 것이다. -한병철의 피로사회 중 p81 ~82" wrapText="true">
+                        <TextArea fx:id="leftTA" layoutX="5.0" layoutY="5.0" prefHeight="548.0" prefWidth="361.0" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font></TextArea>

@@ -13,6 +13,8 @@ import java.util.Set;
 
 import javax.swing.text.AbstractDocument.BranchElement;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,6 +27,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.ColumnConstraints;
@@ -36,6 +39,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import application.Book;
+import application.ViewController;
 
 public class MainController implements Initializable{
 	
@@ -53,6 +59,7 @@ public class MainController implements Initializable{
   	@FXML ColumnConstraints gridthirdH;
   	@FXML ColumnConstraints gridfourH;
   	
+	
   	//new bookbtn image
   	Image bookImage = new Image("file:img/bookbutton.png");
 
@@ -97,7 +104,7 @@ public class MainController implements Initializable{
 
     
     				//코드 실행 확인용
-    				System.out.println(fileContext);
+    				//System.out.println(fileContext);
     				
     				//Book 객체 이름, 내용 설정 
     				book.titleB = fileName;
@@ -110,6 +117,13 @@ public class MainController implements Initializable{
     				newBookbtn.setMaxHeight(47.0);
     				newBookbtn.setStyle(" -fx-border-radius: 0; -fx-background-image: url(\"file:img/bookbutton.png\"); -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-color: #e0dddc; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );" );
     				grid.add(newBookbtn, 1, 0);
+    				
+    				//번역 버튼 
+    		    	newBookbtn.setOnAction(e ->{
+    		    		TestViewMove(book, e);
+    		    		
+    		    	});
+    		    	
     			}
     			
     			catch(FileNotFoundException fne) {
@@ -137,44 +151,29 @@ public class MainController implements Initializable{
     }
 
 	
- 
-	//view fxml 로 이동 (수정 필요)
-	public void ViewMove(ActionEvent e) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml")); 
-		Parent root;
-		try {
-	
-			root = (Parent) loader.load();
-			Stage stage = new Stage();
-			//!!!! file 이름으로 setting 설정 필수  
-		    stage.setTitle("EBookReader");
-		    Scene scene = new Scene(root);
-		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		    stage.setScene(scene);
-		    stage.show();
-			
-			
-		} catch (IOException ve) {
-			ve.printStackTrace();
-		} 
-	}
-
-	
-	
-	//test 
-	//view fxml 로 이동 (수정 필요)
-	public void TestViewMove(ActionEvent e) {
+	//reader 불러오기(새 창)
+	public void TestViewMove(Book book, ActionEvent e) {
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("testView.fxml")); 
 		Parent root;
+		Image icon = new Image("file:img/windowicon.png");
+		
 		Pane pane = new Pane();
 		try {
 			root = (Parent) loader.load();
+			
 			Stage stage = new Stage();
-		    stage.setTitle("fatigueSociety");
+			stage.getIcons().add(icon);
+			stage.setResizable(false);
+		    stage.setTitle(book.Booktitle());
+		    //book 전달
+		    ViewController.BookIn(book);
+		  
+		    
+		    
 		    Scene scene = new Scene(root);
 		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
+		    
 		    stage.setScene(scene);
 		    stage.show();
 		    
@@ -187,6 +186,7 @@ public class MainController implements Initializable{
 	
 	}
 	
+	    	
 	//다크 모드 
 	public void Darkmode(ActionEvent e) {
 
