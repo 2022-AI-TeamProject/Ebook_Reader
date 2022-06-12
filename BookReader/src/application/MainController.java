@@ -26,7 +26,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -49,6 +52,10 @@ public class MainController implements Initializable{
 
   	//OpenFile, 불러올 파일을 선택할 때 새로운 stage 필요  
 	private Stage addStage;
+	
+	//메뉴(부종목) 기능 
+	@FXML MenuItem DarkModeBtn = new MenuItem();
+	@FXML Button searchButton = new Button();
 	
   	//Grid layout 
 	@FXML GridPane grid;
@@ -116,14 +123,48 @@ public class MainController implements Initializable{
     				newBookbtn.setMinHeight(166.0);
     				newBookbtn.setMinWidth(123.0);
     				newBookbtn.setStyle(" -fx-border-radius: 0; -fx-background-image: url(\"file:img/bookbutton.png\"); -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-color: #e0dddc; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );" );
+    				
+    				//gridlayout 위치 배정 
     				grid.add(newBookbtn, 1, 0);
     				
-    				//번역 버튼 
-    		    	newBookbtn.setOnAction(e ->{
-    		    		TestViewMove(book, e);
-
-    		    		
+    				
+    				//버튼 클릭 마우스 이벤트 
+    		    	newBookbtn.setOnMouseClicked(e -> {    		    		
+    		    		MouseButton button = e.getButton();
+    		    		//왼쪽 마우스 클릭시 reader 새 창 
+    		    		if(button == MouseButton.PRIMARY) {
+    		    			TestViewMove(book, e);
+    		    		}
+    		    		//오른쪽 마우스 클릭시 삭제 
+    		    		else if(button == MouseButton.SECONDARY) {
+    		    			//클릭 확인용 
+    		    			System.out.println("delete");
+    		    			DeleteBook(book);
+    		    			grid.getChildren().remove(newBookbtn);
+    		    		}
     		    	});
+    		    	
+    		    	/*
+    		    	//text area에서 검색 
+    		    	searchButton.setOnMouseClicked(e -> {    		    		
+    		    		MouseButton button = e.getButton();
+    		    		
+    		    		//text field에서 하이라이트 표시 검색 
+    		    		if(button == MouseButton.PRIMARY) {
+    		    			if(textField.getText() != null && !leftTA.getText().isEmpty()) {
+    		                    int index = leftTA.getText().indexOf(textField.getText()); 
+    		                    if (index == -1) {
+    		                        textField.setText("검색 결과가 없습니다.");
+    		                    } else {   
+    		                        leftTA.selectRange(index, index + textField.getLength());
+    		                    }       
+    		                } else {
+    		                	textField.setText("검색할 문자가 없습니다.");
+    		                }
+    		    		}
+    		    	});
+    		    	*/
+    		    
     		    	
     			}
     			
@@ -154,7 +195,7 @@ public class MainController implements Initializable{
 
 	
 	//reader 불러오기(새 창)
-	public void TestViewMove(Book book, ActionEvent e) {
+	public void TestViewMove(Book book, MouseEvent e) {
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("testView.fxml")); 
 		Parent root;
@@ -179,22 +220,23 @@ public class MainController implements Initializable{
 		    
 		    stage.setScene(scene);
 		    stage.show();
-		    
-		    
-		    
+		        
 		} catch (IOException tve) {
 			tve.printStackTrace();
 		}
-	    
-	
 	}
 	
-	//다크 모드 
+	//책 버튼 삭제 
+	public void DeleteBook(Book book) {
+		book = null;
+	}
+	
+	//다크모드
 	public void Darkmode(ActionEvent e) {
-
+		
 		
 	}
-	
+
 
 
 }

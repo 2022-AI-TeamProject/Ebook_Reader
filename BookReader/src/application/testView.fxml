@@ -47,6 +47,11 @@
                 <Menu mnemonicParsing="false">
                   <items>
                     <MenuItem fx:id="transKE" mnemonicParsing="false" onAction="#Translation" text="번역(한국어-&gt;영어)" />
+                        <MenuItem fx:id="transEK" mnemonicParsing="false" onAction="#TranslationEK" text="번역(영어-&gt;한국어)" />
+                        <MenuItem fx:id="transKJ" mnemonicParsing="false" onAction="#TranslationKJ" text="번역(한국어-&gt;일본어)" />
+                        <MenuItem fx:id="transJK" mnemonicParsing="false" onAction="#TranslationJK" text="번역(일본어-&gt;한국어)" />
+                        <MenuItem fx:id="transKC" mnemonicParsing="false" onAction="#TranslationKC" text="번역(한국어-&gt;중국어-간체)" />
+                        <MenuItem fx:id="transCK" mnemonicParsing="false" onAction="#TranslationCK" text="번역(중국어-간체-&gt;한국어)" />
                   </items>
                      <graphic>
                         <Button fx:id="transbtn" prefHeight="42.0" prefWidth="42.0" />
@@ -64,7 +69,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            	<TextField />
+            	<TextField fx:id="textField" />
             	<Button fx:id="searchButton" prefHeight="42.0" prefWidth="42.0" />
             <MenuBar fx:id="viewmenus">
               <menus>
