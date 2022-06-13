@@ -75,6 +75,12 @@
               <menus>
                 <Menu mnemonicParsing="false">
                   <items>
+                        <Menu fx:id="lookSetting" mnemonicParsing="false" text="보기 설정" >
+                        	<Menu fx:id ="fontSetting" mnemonicParsing="false" text="글꼴 설정">
+                        		<MenuItem fx:id ="KopubFont" mnemonicParsing="false" text="KoPub바탕체"/>
+                        		<MenuItem fx:id ="NanumFont" mnemonicParsing="false" text="나눔고딕체"/>
+                        	</Menu>
+                        </Menu>
                     <MenuItem mnemonicParsing="false" text="어두운 모드" />
                         <MenuItem mnemonicParsing="false" text="version 0.o.1" />
                   </items>
@@ -91,25 +97,27 @@
  
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <SplitPane dividerPositions="0.494148244473342" layoutX="71.0" layoutY="32.0" prefHeight="560.0" prefWidth="759.0">
+            <SplitPane dividerPositions="0.494148244473342, 0.5" layoutX="71.0" layoutY="32.0" prefHeight="560.0" prefWidth="759.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="543.0" prefWidth="284.0">
                      <children>
-                        <TextArea fx:id="leftTA" layoutX="5.0" layoutY="5.0" prefHeight="548.0" prefWidth="361.0" wrapText="true">
+                        <TextArea fx:id="leftTA" layoutX="14.0" layoutY="5.0" prefHeight="548.0" prefWidth="361.0" wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font></TextArea>
                      </children></AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="370.0">
-                     <children>
-                        <TextArea fx:id="rightTA" layoutX="5.0" layoutY="5.0" prefHeight="548.0" prefWidth="366.0" />
-                     </children></AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="370.0" />
+                  <TextArea fx:id="rightTA" prefHeight="548.0" prefWidth="361.0" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextArea>
               </items>
             </SplitPane>
             <Button fx:id="leftPageButton" layoutX="14.0" layoutY="258.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="51.0" />
             <Button fx:id="rightPageButton" layoutX="835.0" layoutY="269.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="51.0" />
-            <Button fx:id="bookMarkOn" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOn" prefHeight="54.0" prefWidth="51.0" />
-             <Button fx:id="bookMarkOff" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOff" prefHeight="54.0" prefWidth="51.0" />
+            <Button fx:id="bookMarkOn" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOn" prefHeight="54.0" prefWidth="51.0" visible="false"/>
+             <Button fx:id="bookMarkOff" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOff" prefHeight="54.0" prefWidth="51.0" visible="true"/>
          </children>
       </Pane>
    </center>

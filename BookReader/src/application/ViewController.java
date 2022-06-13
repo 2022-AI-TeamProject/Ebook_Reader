@@ -35,7 +35,7 @@ import javafx.scene.input.MouseButton;
 import javafx.application.Application;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-
+import javafx.scene.text.Font;
 import application.MainController;
 
 public class ViewController implements Initializable{
@@ -44,6 +44,10 @@ public class ViewController implements Initializable{
 	@FXML MenuItem DarkModeBtn = new MenuItem();
 	@FXML Button searchButton= new Button();
 	@FXML TextField textField = new TextField();
+	
+	//글꼴 설정 
+	@FXML MenuItem KopubFont = new MenuItem();
+	@FXML MenuItem NanumFont = new MenuItem();
 	
 	//번역 버튼 
 	@FXML MenuItem transKE = new MenuItem();
@@ -57,7 +61,11 @@ public class ViewController implements Initializable{
 	String resultText1, resultText2;
 
 	static String context;
-
+	
+	//byte단위로 문자열 자르기 
+	int leftEndByte = 1780;
+	int rightEndByte =3560;
+	
 	//book.context 받아옴 
 	public String viewController(String contextB) {
 		this.context =  contextB;
@@ -67,12 +75,21 @@ public class ViewController implements Initializable{
 	
     @Override
 	public void initialize(URL url, ResourceBundle rb) {
+    	//문자 받아오기 
+    	String allContext = viewController(context);
+    	
     	//context확인용 
-    	System.out.println(viewController(context));
+    	//System.out.println(viewController(allContext));
+    	 
+    	//right textarea width scroll 제거 
+    	rightTA.setWrapText(true);
     	
     	//text area를 context에 입력 
-    	leftTA.setText(viewController(context));
-    
+    	String Lcontext = substringBytes(allContext, 0, leftEndByte);
+    	System.out.println(Lcontext);
+    	leftTA.setText(Lcontext);
+    	String Rcontext = substringBytes(allContext, 1780, rightEndByte);
+    	rightTA.setText(Rcontext);
     	
     	//text area에서 검색 
     	searchButton.setOnMouseClicked(e -> {    		    		
@@ -93,9 +110,46 @@ public class ViewController implements Initializable{
     		}
     	});
     	
+    	/*
+    	KopubFont.setOnAction(EventHandler ->{
+    		rightTA.setFont(Font.loadFont("file:font//BookReader/font/KoPubWorld Batang_Pro Light.otf", 120));
+    		leftTA.setFont(Font.loadFont("file:font//BookReader/font/KoPubWorld Batang_Pro Light.otf", 120));
+    	});
+    	*/
     }
     	
-    
+    //(한글) 문자열 byte 단위로 subString 
+    //참고 http://it-archives.com/222407554448/ 
+    public static String substringBytes(String str, int beginBytes, int endBytes) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+
+        int len = str.length();
+        
+        int beginIndex = -1;
+        int endIndex = 0;
+
+        int curBytes = 0;
+        String ch = null;
+        for (int i = 0; i < len; i++) {
+            ch = str.substring(i, i + 1);
+            curBytes += ch.getBytes().length;
+
+            if (beginIndex == -1 && curBytes >= beginBytes) {
+                beginIndex = i;
+            }
+            
+            if (curBytes > endBytes) {
+                break;
+            } else {
+                endIndex = i + 1;
+            }
+        }
+     
+
+        return str.substring(beginIndex, endIndex);
+    }
 	 
     //번역
     
@@ -106,6 +160,7 @@ public class ViewController implements Initializable{
     	getText2 = rightTA.getText();
     	
     	leftTA.setText(trans(getText1, null));
+    	rightTA.setText(trans(getText2, null));
     }
     
     //영->한 
@@ -115,6 +170,7 @@ public class ViewController implements Initializable{
     	getText2 = rightTA.getText();
     	
     	leftTA.setText(transEK(getText1, null));
+    	rightTA.setText(trans(getText2, null));
     }
     
     //한->일
@@ -124,6 +180,7 @@ public class ViewController implements Initializable{
     	getText2 = rightTA.getText();
     	
     	leftTA.setText(transKJ(getText1, null));
+    	rightTA.setText(trans(getText2, null));
     }
 
     //일->한
@@ -133,6 +190,7 @@ public class ViewController implements Initializable{
     	getText2 = rightTA.getText();
     	
     	leftTA.setText(transJK(getText1, null));
+    	rightTA.setText(trans(getText2, null));
     }
     
     //한->중(간체)
@@ -142,6 +200,7 @@ public class ViewController implements Initializable{
     	getText2 = rightTA.getText();
     	
     	leftTA.setText(transKC(getText1, null));
+    	rightTA.setText(trans(getText2, null));
     }
 
     public void TranslationCK(ActionEvent e) { 
@@ -150,6 +209,7 @@ public class ViewController implements Initializable{
     	getText2 = rightTA.getText();
     	
     	leftTA.setText(transCK(getText1, null));
+    	rightTA.setText(trans(getText2, null));
     }
     
     public static String trans(String text, String[] args) {
@@ -495,13 +555,16 @@ public class ViewController implements Initializable{
 	
 	//북마크 켜기
 	public void BookMarkOn(ActionEvent e) {
-		
+		Button button = new Button();
+		button.setVisible(false);
 	}
 	
 	//북마크 끄기 
 	public void BookMarkOff(ActionEvent e) {
 		Button button = new Button();
-		button.setVisible(false);
+		button.setVisible(true);
 	}
+	
+	
 }
 
