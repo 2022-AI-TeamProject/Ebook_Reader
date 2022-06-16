@@ -96,7 +96,7 @@
 	-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0 , 2 , 2 );
 }
 
-#musicbtn{
+#MusicBtn{
 	-fx-background-radius: 1em;
 	-fx-background-image: url("file:img/music.png");
 	-fx-background-position: center center;

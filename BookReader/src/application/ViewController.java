@@ -25,17 +25,25 @@ import com.google.gson.JsonParser;
  import javafx.event.ActionEvent;
  import javafx.event.EventHandler;
  import javafx.fxml.FXML;
- import javafx.fxml.Initializable;
- import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
  import javafx.scene.control.MenuItem;
  import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import application.MainController;
 
 public class ViewController implements Initializable{
@@ -43,6 +51,7 @@ public class ViewController implements Initializable{
 	//메뉴(부종목) 기능 
 	@FXML MenuItem DarkModeBtn = new MenuItem();
 	@FXML Button searchButton= new Button();
+	@FXML Button MusicBtn= new Button();
 	@FXML TextField textField = new TextField();
 	
 	//글꼴 설정 
@@ -62,6 +71,8 @@ public class ViewController implements Initializable{
 
 	static String context;
 	
+	HashMap pageHashMap = new HashMap();
+	
 	//byte단위로 문자열 자르기 
 	int leftEndByte = 1780;
 	int rightEndByte =3560;
@@ -75,27 +86,31 @@ public class ViewController implements Initializable{
 	
     @Override
 	public void initialize(URL url, ResourceBundle rb) {
-    	//문자 받아오기 
-    	String allContext = viewController(context);
+    	// 폰트 안티앨리어싱
+    	System.setProperty("prism.lcdtext", "false");
     	
-    	//context확인용 
-    	//System.out.println(viewController(allContext));
-    	 
     	//right textarea width scroll 제거 
     	rightTA.setWrapText(true);
+    	
+    	//문자 받아오기 
+    	String allContext = viewController(context);
+
     	
     	//text area를 context에 입력 
     	String Lcontext = substringBytes(allContext, 0, leftEndByte);
     	System.out.println(Lcontext);
     	leftTA.setText(Lcontext);
+    	
     	String Rcontext = substringBytes(allContext, 1780, rightEndByte);
     	rightTA.setText(Rcontext);
+    	
+    	//page자르기 구현 필요
     	
     	//text area에서 검색 
     	searchButton.setOnMouseClicked(e -> {    		    		
     		MouseButton button = e.getButton();
     		
-    		//text field에서 하이라이트 표시 검색 
+    		//text area에서 하이라이트 표시 검색 
     		if(button == MouseButton.PRIMARY) {
     			if(textField.getText() != null && !leftTA.getText().isEmpty()) {
                     int index = leftTA.getText().indexOf(textField.getText()); 
@@ -110,12 +125,38 @@ public class ViewController implements Initializable{
     		}
     	});
     	
-    	/*
-    	KopubFont.setOnAction(EventHandler ->{
-    		rightTA.setFont(Font.loadFont("file:font//BookReader/font/KoPubWorld Batang_Pro Light.otf", 120));
-    		leftTA.setFont(Font.loadFont("file:font//BookReader/font/KoPubWorld Batang_Pro Light.otf", 120));
+ 
+    	//text area에서 검색 
+    	MusicBtn.setOnMouseClicked(e -> {    		    		
+    		
+
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicPlayer.fxml")); 
+    		Parent root;
+    		Image icon = new Image("file:img/windowicon.png");
+    		
+    		Pane pane = new Pane();
+    		try {
+    			root = (Parent) loader.load();
+    			
+    			Stage stage = new Stage();
+    			stage.getIcons().add(icon);
+    			stage.setResizable(false);
+    		    stage.setTitle("Book Reader Music Player");
+    			
+    		    Scene scene = new Scene(root);
+    		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    		    stage.setScene(scene);
+    		    stage.show();
+    	
+    		        
+    		} catch (IOException tve) {
+    			tve.printStackTrace();
+    		}
+    		
+    		
     	});
-    	*/
+    	
+    
     }
     	
     //(한글) 문자열 byte 단위로 subString 
@@ -567,4 +608,3 @@ public class ViewController implements Initializable{
 	
 	
 }
-

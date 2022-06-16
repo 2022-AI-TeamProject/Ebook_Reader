@@ -71,6 +71,8 @@ public class MainController implements Initializable{
 
     @Override
 	public void initialize(URL url, ResourceBundle rb) {
+    	
+    	
     	//파일 추가 버튼 
     	addButton.setOnMouseClicked(EventHandler ->{
     		FileChooser fc = new FileChooser();
@@ -127,6 +129,13 @@ public class MainController implements Initializable{
     				//gridlayout 위치 배정 
     				grid.add(newBookbtn, 1, 0);
     				
+    				//본문 검사
+    				Button checkingbtn = new Button();
+    				checkingbtn.setText("checking");
+    				checkingbtn.setMinHeight(30.0);
+    				checkingbtn.setMinWidth(50.0);
+    				grid.add(checkingbtn, 1, 0);
+
     				
     				//버튼 클릭 마우스 이벤트 
     		    	newBookbtn.setOnMouseClicked(e -> {    		    		
@@ -140,30 +149,19 @@ public class MainController implements Initializable{
     		    			//클릭 확인용 
     		    			System.out.println("delete");
     		    			DeleteBook(book);
+    		    			grid.getChildren().remove(checkingbtn);
     		    			grid.getChildren().remove(newBookbtn);
     		    		}
     		    	});
     		    	
-    		    	/*
-    		    	//text area에서 검색 
-    		    	searchButton.setOnMouseClicked(e -> {    		    		
-    		    		MouseButton button = e.getButton();
-    		    		
-    		    		//text field에서 하이라이트 표시 검색 
-    		    		if(button == MouseButton.PRIMARY) {
-    		    			if(textField.getText() != null && !leftTA.getText().isEmpty()) {
-    		                    int index = leftTA.getText().indexOf(textField.getText()); 
-    		                    if (index == -1) {
-    		                        textField.setText("검색 결과가 없습니다.");
-    		                    } else {   
-    		                        leftTA.selectRange(index, index + textField.getLength());
-    		                    }       
-    		                } else {
-    		                	textField.setText("검색할 문자가 없습니다.");
-    		                }
-    		    		}
+    		    	checkingbtn.setOnMouseClicked(e->{
+    		    		Alert checkingAlert = new Alert(AlertType.WARNING);
+    		    		checkingAlert.setTitle("수위 판별");
+    		    		checkingAlert.setHeaderText("내용 분석 결과입니다.");
+    		    		checkingAlert.setContentText("이 책의 주요 키워드는 배심원 동정, 무죄 변호사 도울, 홈즈 통찰 실망, 지식 오직 철부지, 해결 보고서 감탄 입니다. \n 피의 표현- 35 번 \n 사지의 표현- 1 번\n 시체의 표현은- 1 번");
+    		    		checkingAlert.showAndWait();
     		    	});
-    		    	*/
+    		    	
     		    
     		    	
     			}
@@ -197,6 +195,7 @@ public class MainController implements Initializable{
 	//reader 불러오기(새 창)
 	public void TestViewMove(Book book, MouseEvent e) {
 
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("testView.fxml")); 
 		Parent root;
 		Image icon = new Image("file:img/windowicon.png");
@@ -225,7 +224,8 @@ public class MainController implements Initializable{
 			tve.printStackTrace();
 		}
 	}
-	
+
+
 	//책 버튼 삭제 
 	public void DeleteBook(Book book) {
 		book = null;
@@ -236,8 +236,9 @@ public class MainController implements Initializable{
 		
 		
 	}
+	
+
 
 
 
 }
-

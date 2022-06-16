@@ -30,20 +30,14 @@
                <font>
                   <Font size="21.0" />
                </font></Button>
+            <Button fx:id="MusicBtn" prefHeight="42.0" prefWidth="42.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="55.23828125" />
             <Pane HBox.hgrow="ALWAYS">
                <children>
                </children></Pane>
             <MenuBar fx:id="viewmenu">
               <menus>
-                <Menu mnemonicParsing="false">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                     <graphic>
-                        <Button fx:id="musicbtn" prefHeight="42.0" prefWidth="42.0" />
-                     </graphic>
-                </Menu>
+                <Menu mnemonicParsing="false" />
                 <Menu mnemonicParsing="false">
                   <items>
                     <MenuItem fx:id="transKE" mnemonicParsing="false" onAction="#Translation" text="번역(한국어-&gt;영어)" />
@@ -75,10 +69,10 @@
               <menus>
                 <Menu mnemonicParsing="false">
                   <items>
-                        <Menu fx:id="lookSetting" mnemonicParsing="false" text="보기 설정" >
-                        	<Menu fx:id ="fontSetting" mnemonicParsing="false" text="글꼴 설정">
-                        		<MenuItem fx:id ="KopubFont" mnemonicParsing="false" text="KoPub바탕체"/>
-                        		<MenuItem fx:id ="NanumFont" mnemonicParsing="false" text="나눔고딕체"/>
+                        <Menu fx:id="lookSetting" mnemonicParsing="false" text="보기 설정">
+                        	<Menu fx:id="fontSetting" mnemonicParsing="false" text="글꼴 설정">
+                        		<MenuItem fx:id="KopubFont" mnemonicParsing="false" text="KoPub바탕체" />
+                        		<MenuItem fx:id="NanumFont" mnemonicParsing="false" text="나눔고딕체" />
                         	</Menu>
                         </Menu>
                     <MenuItem mnemonicParsing="false" text="어두운 모드" />
@@ -116,8 +110,8 @@
             </SplitPane>
             <Button fx:id="leftPageButton" layoutX="14.0" layoutY="258.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="51.0" />
             <Button fx:id="rightPageButton" layoutX="835.0" layoutY="269.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="51.0" />
-            <Button fx:id="bookMarkOn" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOn" prefHeight="54.0" prefWidth="51.0" visible="false"/>
-             <Button fx:id="bookMarkOff" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOff" prefHeight="54.0" prefWidth="51.0" visible="true"/>
+            <Button fx:id="bookMarkOn" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOn" prefHeight="54.0" prefWidth="51.0" visible="false" />
+             <Button fx:id="bookMarkOff" layoutX="835.0" layoutY="32.0" mnemonicParsing="false" onAction="#BookMarkOff" prefHeight="54.0" prefWidth="51.0" visible="true" />
          </children>
       </Pane>
    </center>
