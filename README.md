@@ -12,8 +12,8 @@ UI/UX : JavaFx
 
 ## Support
 1. Translation
-2. Music Player
-3. Keyword identification
+2. Music Player -(AI automatically generated)
+3. Keyword identification - (AI)
 
 
 ## Development Team Share Page
